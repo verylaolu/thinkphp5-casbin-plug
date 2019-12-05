@@ -1,6 +1,8 @@
-#基于casbin AND think-casbin 
-##开发的简易版本的权限管理插件
-##使用方式简单，灵活
+### 项目简介
+    基于casbin AND think-casbin 应用于THINKPHP 5.* 提供 RESTFUL API 权限管理
+    并提供 RESTFUL API 可以自由封装可视化界面  
+    开发的简易版本的权限管理插件
+    使用方式简单，灵活
 
 ### 安装方法
     1、创建thinkphp项目（如果没有）：

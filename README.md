@@ -1,3 +1,7 @@
+#基于casbin AND think-casbin 
+##开发的简易版本的权限管理插件
+##使用方式简单，灵活
+
 ### 安装方法
     1、创建thinkphp项目（如果没有）：
         composer create-project topthink/think tp

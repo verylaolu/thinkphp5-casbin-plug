@@ -104,9 +104,7 @@ class User extends Controller
         $action = $_SERVER['REQUEST_METHOD'];   //获取请求方法
         //验证用户路由权限
         if (true === Casbin::enforce($user, $url, $action)) {
-            header("HTTP/1.1 200 Success");
-            header('Content-Type:application/json; charset=utf-8');
-            exit(json_encode(['msg'=>'获得权限','data'=>'']));
+            return $userinfo; //权限验证通过
         } else {
             header("HTTP/1.1 203 Non-Authoritative Information");
             header('Content-Type:application/json; charset=utf-8');

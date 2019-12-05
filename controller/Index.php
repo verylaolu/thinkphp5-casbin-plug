@@ -13,10 +13,11 @@ use think\response\Json;
  */
 class Index extends Controller
 {
+    private $userinfo;
     public function __construct()
     {
         //权限验证构造方法，设计权限验证代码请必须添加，方可自动执行用户验证规则
-        User::checkuser();
+        $this->userinfo = User::checkuser();
     }
     public function index()
     {

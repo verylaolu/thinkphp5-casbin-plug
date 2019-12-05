@@ -214,11 +214,11 @@ class Rule extends Controller
      *         type="string"
      *     ),
      *     @SWG\Response(
-     *         response=301,
+     *         response=200,
      *         description="['msg'=>'删除成功，永久删除','data'=>'']",
      *     ),
      *     @SWG\Response(
-     *         response=304,
+     *         response=204,
      *         description="['msg'=>'被其他权限继承，所以不能删除','data'=>'']",
      *     ),
      *     @SWG\Response(
@@ -243,7 +243,7 @@ class Rule extends Controller
         //判断要删除的权限是否被其他用户继承， 如果被继承则不可以删除
         $user = Casbin::getUsersForRole($name);
         if(count($user)>0){
-            return json(['msg'=>'被其他权限继承，所以不能删除','data'=>''], 304);//post返回201表示创建成功,返回ID
+            return json(['msg'=>'被其他权限继承，所以不能删除','data'=>''], 204);//post返回201表示创建成功,返回ID
         }
         //没有被其他人继承，根据类型删除相应权限
         if($type=='p'){
@@ -256,7 +256,7 @@ class Rule extends Controller
         }
         //根据删除权限结果，返回信息
         if($state){
-            return json(['msg'=>'删除成功，永久删除','data'=>''], 301);//post返回201表示创建成功,返回ID
+            return json(['msg'=>'删除成功，永久删除','data'=>''], 200);//post返回201表示创建成功,返回ID
         }else{
             return json(['msg'=>'接口服务内部错误','data'=>''], 500);//post返回201表示创建成功,返回ID
         }

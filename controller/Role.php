@@ -240,11 +240,11 @@ class Role extends Controller
      *         type="string"
      *     ),
      *     @SWG\Response(
-     *         response=301,
+     *         response=200,
      *         description="['msg'=>'删除成功，永久删除','data'=>'']",
      *     ),
      *     @SWG\Response(
-     *         response=304,
+     *         response=204,
      *         description="['msg'=>'被其他权限继承，所以不能删除','data'=>'']",
      *     ),
      *     @SWG\Response(
@@ -269,11 +269,11 @@ class Role extends Controller
         try {
             $user = Casbin::getUsersForRole($role_tag);
             if(count($user)>0){
-                return json(['msg'=>'被其他权限继承，所以不能删除','data'=>''],304);//存在绑定关系，需先接触关系在删除角色
+                return json(['msg'=>'被其他权限继承，所以不能删除','data'=>''],204);//存在绑定关系，需先接触关系在删除角色
             }else{
                 $this->RoleModel->del(['role_tag'=>$role_tag]);
                 Casbin::deleteRole($role_tag);
-                return json(['msg'=>'删除成功，永久删除','data'=>''], 301);
+                return json(['msg'=>'删除成功，永久删除','data'=>''], 200);
             }
         } catch (Exception $e) {
             return json(['msg'=>'接口服务内部错误','data'=>''], 500);

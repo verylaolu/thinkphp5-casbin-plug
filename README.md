@@ -137,6 +137,23 @@
 
 
 ### 测试数据
+    INSERT INTO `casbin_user` (`id`, `username`, `password`, `name`, `mobile`, `email`, `create_time`, `update_time`)
+    VALUES
+        (1, 'tomlu', '321123', '猫儿', '13888888888', '261738244@qq.com', 1575451059, NULL),
+        (2, 'test', 'test', '测试用户', '13333333333', 'test@test.com', 1575451059, NULL);
+    
+    INSERT INTO `casbin_rule` (`id`, `ptype`, `v0`, `v1`, `v2`, `v3`, `v4`, `v5`)
+    VALUES
+        (1, 'p', 'root', '/a/good', 'PUT', '', NULL, NULL),
+        (2, 'p', 'root', '/a/good', 'GET', '', NULL, NULL),
+        (3, 'g', 'tomlu', 'root', NULL, NULL, NULL, NULL),
+        (4, 'p', 'tomlu', '/index', 'DELETE', '', NULL, NULL);
+    
+    INSERT INTO `casbin_role` (`id`, `role_name`, `role_tag`, `create_time`, `update_time`)
+    VALUES
+        (1, '超级管理员', 'root', 1575437813, NULL),
+        (2, '普通管理员', 'admin', 1575437833, NULL);
+
 ### 返回格式
 错误返回格式：  
 
@@ -162,8 +179,8 @@
     - 200 GET 操作成功
     - 201 POST 创建成功
     - 205 PUT 修改成功
-    - 301 DELETE 删除成功
-    - 304 DELETE 删除失败
+    - 205 DELETE 删除成功
+    - 204 DELETE 删除失败
     - 400 参数校验错误
     - 401 未授权
     - 500 服务器处理错误

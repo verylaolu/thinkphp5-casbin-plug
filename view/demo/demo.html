@@ -43,12 +43,9 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>emp_no</th>
-                <th>emp_kind</th>
-                <th>post_id</th>
-                <th>org_id</th>
+                <th>username</th>
+                <th>password</th>
                 <th>name</th>
-                <th>tel_no</th>
                 <th>mobile</th>
                 <th>email</th>
             </tr>
@@ -136,7 +133,7 @@
         if(ptype == 'p'){
             $("#v0").html('<option value="">选用户/角色</option>');
             $.each(userlist,function(i,v){
-                $("#v0").append('<option value="'+v.emp_no+'">用户:'+v.name+'</option>');
+                $("#v0").append('<option value="'+v.username+'">用户:'+v.name+'</option>');
             });
             $.each(rolelist,function(i,v){
                 $("#v0").append('<option value="'+v.role_tag+'">角色:'+v.role_name+'</option>');
@@ -148,7 +145,7 @@
         }else{
             $("#v0").html('<option value="">选用户</option>');
             $.each(userlist,function(i,v){
-                $("#v0").append('<option value="'+v.emp_no+'">用户:'+v.name+'</option>');
+                $("#v0").append('<option value="'+v.username+'">用户:'+v.name+'</option>');
             });
             $('#v1_th').html(v1_selected);
             $.each(rolelist,function(i,v){
@@ -172,7 +169,7 @@
                 var statusCode = jqXHR.status;
                 var statusText = jqXHR.statusText;
                 console.log(jqXHR);
-                if(statusCode==301){
+                if(statusCode==200){
                     alert('删除成功');
                     window.location.reload()
                 }else{
@@ -198,7 +195,7 @@
                 var statusCode = jqXHR.status;
                 var statusText = jqXHR.statusText;
                 console.log(jqXHR);
-                if(statusCode==301){
+                if(statusCode==200){
                     alert('删除成功');
                     window.location.reload()
                 }else{
@@ -294,12 +291,9 @@
                 $.each(info, function(i,val){
                     data = '<tr>' +
                         '<th scope="row">'+val.id+'</th>' +
-                        '<td>'+val.emp_no+'</td>' +
-                        '<td>'+val.emp_kind+'</td>' +
-                        '<td>'+val.post_id+'</td>' +
-                        '<td>'+val.org_id+'</td>' +
+                        '<td>'+val.username+'</td>' +
+                        '<td>'+val.password+'</td>' +
                         '<td>'+val.name+'</td>' +
-                        '<td>'+val.tel_no+'</td>' +
                         '<td>'+val.mobile+'</td>' +
                         '<td>'+val.email+'</td>' +
                         '</tr>';
